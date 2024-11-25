@@ -29,5 +29,5 @@ model.fit(myGene,steps_per_epoch=300,epochs=1,callbacks=[model_checkpoint])
 # use_multiprocessing：布尔值。当为True时，使用基于基于过程的线程。
 
 testGene = testGenerator("data/membrane/test")   #批量导入图片并修改格式
-results = model.predict_generator(testGene,30,verbose=1)  #测试数据进行预测
+results = model.predict(testGene,steps=30,verbose=1)  #测试数据进行预测
 saveResult("data/membrane/test",results)   #批量保存结果
