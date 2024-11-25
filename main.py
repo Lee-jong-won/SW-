@@ -15,7 +15,7 @@ myGene = trainGenerator(2,'data/membrane/train','image','label',data_gen_args,sa
 #Keras中，当数据比较大时，不能全部载入内存，在训练的时候就需要利用train_on_batch或fit_generator进行训练了
 
 model = unet()   #载入模型
-model_checkpoint = ModelCheckpoint('unet_membrane.hdf5', monitor='loss',verbose=1, save_best_only=True)
+model_checkpoint = ModelCheckpoint('unet_membrane.keras', monitor='loss',verbose=1, save_best_only=True)
 #该回调函数将在每个epoch后保存模型到filepath
 #使用keras搭建模型，训练时验证集上val_acc达到1了，但在测试数据集上面模型还没有完全收敛。
 # 由于在ModelCheckpoint的参数设置时设置了仅保留最佳模型，导致无法保存最新的更好的模型。
