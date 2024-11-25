@@ -20,7 +20,7 @@ model_checkpoint = ModelCheckpoint('unet_membrane.keras', monitor='loss',verbose
 #使用keras搭建模型，训练时验证集上val_acc达到1了，但在测试数据集上面模型还没有完全收敛。
 # 由于在ModelCheckpoint的参数设置时设置了仅保留最佳模型，导致无法保存最新的更好的模型。
 
-model.fit_generator(myGene,steps_per_epoch=300,epochs=1,callbacks=[model_checkpoint])
+model.fit(myGene,steps_per_epoch=300,epochs=1,callbacks=[model_checkpoint])
 # 通过Python generator产生一批批的数据用于训练模型。generator可以和模型并行运行，例如，可以使用CPU生成批数据同时在GPU上训练模型
 # generator：一个generator或Sequence实例，为了避免在使用multiprocessing时直接复制数据。
 # steps_per_epoch：从generator产生的步骤的总数（样本批次总数）。通常情况下，应该等于数据集的样本数量除以批量的大小。
